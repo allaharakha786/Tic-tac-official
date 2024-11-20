@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "133784169535",
+    "firebase_url": "https://tic-tac-toe-897db-default-rtdb.firebaseio.com",
+    "project_id": "tic-tac-toe-897db",
+    "storage_bucket": "tic-tac-toe-897db.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133784169535:android:aeacf18d3df5109827dc8a",
+        "android_client_info": {
+          "package_name": "com.tictac.wrteam.TicTacToe"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133784169535-1pqnhugilqr243anv7t585li897d2s7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLxGqNvlmTNbFHrQNGRMerLRZsOFrA1lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133784169535-1pqnhugilqr243anv7t585li897d2s7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "133784169535-7gcji8k3vsvfkj77rtq3sdhcbd22v020.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tictactoe.nex"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133784169535:android:34341d761e72e72d27dc8a",
+        "android_client_info": {
+          "package_name": "com.tictactoe.nex"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133784169535-801punh547bia5e232udj51kh16ja8uh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.tictactoe.nex",
+            "certificate_hash": "60d75744b9a74a42483c145cc65e39494dc12065"
+          }
+        },
+        {
+          "client_id": "133784169535-1pqnhugilqr243anv7t585li897d2s7r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLxGqNvlmTNbFHrQNGRMerLRZsOFrA1lk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133784169535-1pqnhugilqr243anv7t585li897d2s7r.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "133784169535-7gcji8k3vsvfkj77rtq3sdhcbd22v020.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.tictactoe.nex"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
