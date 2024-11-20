@@ -67,16 +67,13 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
                         child: Container(
                           height: 35,
                           width: 35,
-                          decoration: BoxDecoration(
-                              color: Colors.white.withOpacity(0.5),
-                              borderRadius: BorderRadius.circular(10)),
+                          decoration: BoxDecoration(color: Colors.white.withOpacity(0.5), borderRadius: BorderRadius.circular(10)),
                           child: FittedBox(
                             child: IconButton(
                               onPressed: () {
                                 Navigator.pop(context);
                               },
-                              icon:
-                                  Icon(Icons.arrow_back_ios_outlined, size: 30),
+                              icon: Icon(Icons.arrow_back_ios_outlined, size: 30),
                             ),
                           ),
                         ))
@@ -114,10 +111,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
 
         textInputAction: TextInputAction.next,
         // inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        validator: (val) => utils.validateEmail(
-            val!,
-            utils.getTranslated(context, "emailRequired"),
-            utils.getTranslated(context, "enterValidEmail")),
+        validator: (val) => utils.validateEmail(val!, utils.getTranslated(context, "emailRequired"), utils.getTranslated(context, "enterValidEmail")),
         onSaved: (String? value) {
           email = value;
         },
@@ -129,10 +123,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
             size: 20,
           ),
           hintText: utils.getTranslated(context, "email"),
-          hintStyle: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: primaryColor, fontWeight: FontWeight.normal),
+          hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: primaryColor, fontWeight: FontWeight.normal),
           filled: true,
           fillColor: white,
           contentPadding: const EdgeInsets.symmetric(
@@ -183,10 +174,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
             size: 20,
           ),
           hintText: utils.getTranslated(context, "username"),
-          hintStyle: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: primaryColor, fontWeight: FontWeight.normal),
+          hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: primaryColor, fontWeight: FontWeight.normal),
           filled: true,
           fillColor: white,
           contentPadding: const EdgeInsets.symmetric(
@@ -223,10 +211,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
         //focusNode: monoFocus,
         textInputAction: TextInputAction.next,
         // inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-        validator: (val) => utils.validatePass(
-            val!,
-            utils.getTranslated(context, "passwordRequired"),
-            utils.getTranslated(context, "passwordShouldHaveSixChar")),
+        validator: (val) => utils.validatePass(val!, utils.getTranslated(context, "passwordRequired"), utils.getTranslated(context, "passwordShouldHaveSixChar")),
         onSaved: (String? value) {
           password = value;
         },
@@ -257,10 +242,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
             maxHeight: 35,
           ),
           hintText: utils.getTranslated(context, "password"),
-          hintStyle: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: primaryColor, fontWeight: FontWeight.normal),
+          hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: primaryColor, fontWeight: FontWeight.normal),
           filled: true,
           fillColor: white,
           contentPadding: const EdgeInsets.symmetric(
@@ -337,10 +319,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
             maxHeight: 35,
           ),
           hintText: utils.getTranslated(context, "confirmPassword"),
-          hintStyle: Theme.of(context)
-              .textTheme
-              .titleSmall!
-              .copyWith(color: primaryColor, fontWeight: FontWeight.normal),
+          hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: primaryColor, fontWeight: FontWeight.normal),
           filled: true,
           fillColor: white,
           contentPadding: const EdgeInsets.symmetric(
@@ -361,8 +340,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
 
   Widget getSignUpButton() {
     return Padding(
-      padding: const EdgeInsetsDirectional.only(
-          end: 30.0, top: 20.0, start: 25.0, bottom: 10.0),
+      padding: const EdgeInsetsDirectional.only(end: 30.0, top: 20.0, start: 25.0, bottom: 10.0),
       child: Align(
         alignment: Alignment.bottomCenter,
         child: InkWell(
@@ -393,8 +371,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
 
   void validateAndSubmit() async {
     if (validateAndSave()) {
-      var result = await Auth.signin(context, false, "android",
-          email: email!.trim(), password: password, username: username!.trim());
+      var result = await Auth().signin(context, false, "android", email: email!.trim(), password: password, username: username!.trim());
       if (mounted) {
         setSnackbar(result.toString());
       }
@@ -430,8 +407,7 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
   Widget getHeadingLabel() {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
-      child: Text(utils.getTranslated(context, "signUp"),
-          style: TextStyle(color: lightWhite, fontSize: 20)),
+      child: Text(utils.getTranslated(context, "signUp"), style: TextStyle(color: lightWhite, fontSize: 20)),
     );
   }
 
@@ -441,16 +417,14 @@ class _SigninWithEmailState extends State<SignInWithEmail> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(utils.getTranslated(context, "HaveAnAccount"),
-              style: TextStyle(color: lightWhite)),
+          Text(utils.getTranslated(context, "HaveAnAccount"), style: TextStyle(color: lightWhite)),
           InkWell(
             child: Text(
               " ${utils.getTranslated(context, "signIn")}",
               style: TextStyle(decoration: TextDecoration.underline),
             ),
             onTap: () {
-              Navigator.pushReplacement(context,
-                  CupertinoPageRoute(builder: (context) => LoginWithEmail()));
+              Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context) => LoginWithEmail()));
             },
           ),
         ],

@@ -56,14 +56,10 @@ class _AuthOptionsScreenState extends State<Login> {
               ),
             ),
             Container(
-              padding: EdgeInsets.symmetric(
-                  vertical: MediaQuery.of(context).size.height * 0.1),
+              padding: EdgeInsets.symmetric(vertical: MediaQuery.of(context).size.height * 0.1),
               child: Text(
                 utils.getTranslated(context, "CalculateEveryMove"),
-                style: Theme.of(context)
-                    .textTheme
-                    .headlineMedium!
-                    .copyWith(fontFamily: 'DISPLATTER', color: white),
+                style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontFamily: 'DISPLATTER', color: white),
               ),
             ),
             Platform.isIOS
@@ -73,17 +69,15 @@ class _AuthOptionsScreenState extends State<Login> {
                     padding: const EdgeInsets.symmetric(horizontal: 40.0),
                     child: ElevatedButton.icon(
                       style: ButtonStyle(
-                        backgroundColor:
-                            MaterialStateProperty.resolveWith<Color>(
+                        backgroundColor: MaterialStateProperty.resolveWith<Color>(
                           (Set<MaterialState> states) {
-                            if (states.contains(MaterialState.pressed))
-                              return secondarySelectedColor;
+                            if (states.contains(MaterialState.pressed)) return secondarySelectedColor;
                             return white;
                           },
                         ),
                       ),
                       onPressed: () async {
-                        Auth.signin(context, false, "IOS");
+                        Auth().signin(context, false, "IOS");
                       },
                       icon: getSvgImage(imageName: 'apple_icon'),
                       label: Center(
@@ -108,15 +102,13 @@ class _AuthOptionsScreenState extends State<Login> {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed))
-                        return secondarySelectedColor;
+                      if (states.contains(MaterialState.pressed)) return secondarySelectedColor;
                       return white;
                     },
                   ),
                 ),
                 onPressed: () async {
-                  Auth.signin(context, false, "Android",
-                      email: "", password: "");
+                  Auth().signin(context, false, "Android", email: "", password: "");
                 },
                 icon: getSvgImage(imageName: "google_logo"),
                 label: Center(
@@ -140,8 +132,7 @@ class _AuthOptionsScreenState extends State<Login> {
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed))
-                        return secondarySelectedColor;
+                      if (states.contains(MaterialState.pressed)) return secondarySelectedColor;
                       return white;
                     },
                   ),
@@ -168,21 +159,18 @@ class _AuthOptionsScreenState extends State<Login> {
             Container(
               height: MediaQuery.of(context).size.height * 0.07,
               width: MediaQuery.of(context).size.width,
-              padding: const EdgeInsetsDirectional.only(
-                  start: 40.0, end: 40, bottom: 10),
+              padding: const EdgeInsetsDirectional.only(start: 40.0, end: 40, bottom: 10),
               child: ElevatedButton.icon(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.resolveWith<Color>(
                     (Set<MaterialState> states) {
-                      if (states.contains(MaterialState.pressed))
-                        return secondarySelectedColor;
+                      if (states.contains(MaterialState.pressed)) return secondarySelectedColor;
                       return white;
                     },
                   ),
                 ),
                 onPressed: () async {
-                  await Navigator.of(context).push(CupertinoPageRoute(
-                      builder: (context) => LoginWithEmail()));
+                  await Navigator.of(context).push(CupertinoPageRoute(builder: (context) => LoginWithEmail()));
                 },
                 icon: Icon(
                   Icons.email,
