@@ -59,7 +59,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyBLxGqNvlmTNbFHrQNGRMerLRZsOFrA1lk',
-    appId: '1:133784169535:android:aeacf18d3df5109827dc8a',
+    appId: '1:133784169535:android:e981797b1fc64ec127dc8a',
     messagingSenderId: '133784169535',
     projectId: 'tic-tac-toe-897db',
     databaseURL: 'https://tic-tac-toe-897db-default-rtdb.firebaseio.com',

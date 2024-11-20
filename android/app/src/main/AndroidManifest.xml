@@ -22,7 +22,7 @@
     </queries>
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="TicTacToe"
+        android:label="tic tac official"
         android:usesCleartextTraffic="true">
 
         <activity
