@@ -26,8 +26,7 @@ class HomeScreenActivity extends StatefulWidget {
   HomeScreenActivityState createState() => HomeScreenActivityState();
 }
 
-class HomeScreenActivityState extends State<HomeScreenActivity>
-    with TickerProviderStateMixin {
+class HomeScreenActivityState extends State<HomeScreenActivity> with TickerProviderStateMixin {
   int _swiperIndex = 1;
 
   late AnimationController _animationController;
@@ -71,26 +70,16 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
   String? getlanguage;
 
   List<Item> itemList = [
-    Item(
-        icon: "offline_white",
-        name: "OFFLINE PLAY",
-        desc: "Play with the Clever Fox DORA"),
-    Item(
-        icon: "play_random",
-        name: "PLAY WITH RANDOM",
-        desc: "Find your match around the world"),
-    Item(
-        icon: "passnplay_white",
-        name: "PASS N PLAY",
-        desc: "Pass N Play With your Friend"),
+    Item(icon: "offline_white", name: "OFFLINE PLAY", desc: "Play with the Clever Fox DORA"),
+    Item(icon: "play_random", name: "PLAY WITH RANDOM", desc: "Find your match around the world"),
+    Item(icon: "passnplay_white", name: "PASS N PLAY", desc: "Pass N Play With your Friend"),
   ];
 
   @override
   void initState() {
     super.initState();
     initAnimation();
-    _animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
+    _animationController = AnimationController(vsync: this, duration: Duration(seconds: 1));
 
     centerAnimationController = AnimationController(
       vsync: this,
@@ -102,14 +91,12 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
     doraAnimation = Tween<Offset>(
       begin: Offset(0.0, 1.0),
       end: Offset(0.0, 0.0),
-    ).animate(
-        CurvedAnimation(parent: _animationController, curve: Curves.easeIn));
+    ).animate(CurvedAnimation(parent: _animationController, curve: Curves.easeIn));
 
     leftAnimation = Tween<Offset>(
       begin: Offset(1.0, 0.0),
       end: Offset(0.0, 0.0),
-    ).animate(
-        CurvedAnimation(parent: _animationController, curve: Curves.easeIn));
+    ).animate(CurvedAnimation(parent: _animationController, curve: Curves.easeIn));
     centerAnimationController.forward();
     _animationController.forward();
     getSkinvalues();
@@ -124,11 +111,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
           name: utils.getTranslated(context, "OFFLINE_PLAY"),
           desc: utils.getTranslated(context, "Play_with_the_Clever_Fox_DORA"),
         ),
-        Item(
-            icon: "play_random",
-            name: utils.getTranslated(context, "PLAY_WITH_RANDOM"),
-            desc: utils.getTranslated(
-                context, "Find_your_match_around_the_world")),
+        Item(icon: "play_random", name: utils.getTranslated(context, "PLAY_WITH_RANDOM"), desc: utils.getTranslated(context, "Find_your_match_around_the_world")),
         Item(
           icon: "passnplay_white",
           name: utils.getTranslated(context, "PASS_N_PLAY"),
@@ -148,11 +131,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         name: utils.getTranslated(context, "OFFLINE_PLAY"),
         desc: utils.getTranslated(context, "Play_with_the_Clever_Fox_DORA"),
       ),
-      Item(
-          icon: "play_random",
-          name: utils.getTranslated(context, "PLAY_WITH_RANDOM"),
-          desc:
-              utils.getTranslated(context, "Find_your_match_around_the_world")),
+      Item(icon: "play_random", name: utils.getTranslated(context, "PLAY_WITH_RANDOM"), desc: utils.getTranslated(context, "Find_your_match_around_the_world")),
       Item(
         icon: "passnplay_white",
         name: utils.getTranslated(context, "PASS_N_PLAY"),
@@ -171,42 +150,26 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
       ),
     );
 
-    topAngle =
-        Tween<double>(begin: 9, end: 0).animate(firstAnimationController);
-    bottomAngle =
-        Tween<double>(begin: -9, end: 0).animate(firstAnimationController);
+    topAngle = Tween<double>(begin: 9, end: 0).animate(firstAnimationController);
+    bottomAngle = Tween<double>(begin: -9, end: 0).animate(firstAnimationController);
 
-    centerTopAngle =
-        Tween<double>(begin: 0, end: 9).animate(firstAnimationController);
-    centerBottomAngle =
-        Tween<double>(begin: 0, end: -9).animate(firstAnimationController);
+    centerTopAngle = Tween<double>(begin: 0, end: 9).animate(firstAnimationController);
+    centerBottomAngle = Tween<double>(begin: 0, end: -9).animate(firstAnimationController);
 
-    topSwipeColor = ColorTween(begin: lightWhite, end: secondaryColor)
-        .animate(firstAnimationController);
+    topSwipeColor = ColorTween(begin: lightWhite, end: secondaryColor).animate(firstAnimationController);
 
-    bottomSwipeColor = ColorTween(begin: secondaryColor, end: lightWhite)
-        .animate(firstAnimationController);
+    bottomSwipeColor = ColorTween(begin: secondaryColor, end: lightWhite).animate(firstAnimationController);
 
-    topCenterContainerAlignment =
-        AlignmentTween(begin: Alignment.topCenter, end: Alignment.center)
-            .animate(firstAnimationController);
+    topCenterContainerAlignment = AlignmentTween(begin: Alignment.topCenter, end: Alignment.center).animate(firstAnimationController);
 
-    centerBottomContainerAlignment =
-        AlignmentTween(begin: Alignment.center, end: Alignment.bottomCenter)
-            .animate(firstAnimationController);
+    centerBottomContainerAlignment = AlignmentTween(begin: Alignment.center, end: Alignment.bottomCenter).animate(firstAnimationController);
 
-    bottomCenterContainerAlignment =
-        AlignmentTween(begin: Alignment.bottomCenter, end: Alignment.center)
-            .animate(firstAnimationController);
+    bottomCenterContainerAlignment = AlignmentTween(begin: Alignment.bottomCenter, end: Alignment.center).animate(firstAnimationController);
 
-    centerTopContainerAlignment =
-        AlignmentTween(begin: Alignment.center, end: Alignment.topCenter)
-            .animate(firstAnimationController);
+    centerTopContainerAlignment = AlignmentTween(begin: Alignment.center, end: Alignment.topCenter).animate(firstAnimationController);
 
-    topLastContainerOpacityAnimation =
-        Tween<double>(begin: 0, end: 1).animate(firstAnimationController);
-    lastTopContainerOpacityAnimation =
-        Tween<double>(begin: 1, end: 0).animate(firstAnimationController);
+    topLastContainerOpacityAnimation = Tween<double>(begin: 0, end: 1).animate(firstAnimationController);
+    lastTopContainerOpacityAnimation = Tween<double>(begin: 1, end: 0).animate(firstAnimationController);
   }
 
   void getSkinvalues() async {
@@ -314,8 +277,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
               children: [
                 Container(
                   alignment: Alignment.bottomCenter,
-                  padding: EdgeInsets.only(
-                      bottom: MediaQuery.of(context).size.height * 0.05),
+                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.05),
                   width: MediaQuery.of(context).size.width / 2,
                   child: SlideTransition(
                     position: doraAnimation,
@@ -336,9 +298,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                           setState(() {
                             swipeUP = false;
                           });
-                          firstAnimationController
-                              .forward(from: 0)
-                              .then((value) {
+                          firstAnimationController.forward(from: 0).then((value) {
                             centerAnimationController.reset();
                             centerAnimationController.forward();
 
@@ -420,11 +380,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
     return AnimatedBuilder(
       animation: firstAnimationController,
       builder: (context, child) {
-        return Align(
-            alignment: swipeUP
-                ? centerTopContainerAlignment.value
-                : centerBottomContainerAlignment.value,
-            child: getCenterItem());
+        return Align(alignment: swipeUP ? centerTopContainerAlignment.value : centerBottomContainerAlignment.value, child: getCenterItem());
       },
     );
   }
@@ -434,11 +390,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
       //2rd
       Align(
         alignment: Alignment.topCenter,
-        child: FadeTransition(
-            opacity: swipeUP
-                ? lastTopContainerOpacityAnimation
-                : topLastContainerOpacityAnimation,
-            child: getFirstItem()),
+        child: FadeTransition(opacity: swipeUP ? lastTopContainerOpacityAnimation : topLastContainerOpacityAnimation, child: getFirstItem()),
       ),
       //1st
       swipeUP
@@ -446,9 +398,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
           : AnimatedBuilder(
               animation: firstAnimationController,
               builder: (context, child) {
-                return Align(
-                    alignment: topCenterContainerAlignment.value,
-                    child: getFirstItem());
+                return Align(alignment: topCenterContainerAlignment.value, child: getFirstItem());
               },
             ),
     ];
@@ -459,20 +409,14 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
       //2rd
       Align(
         alignment: Alignment.bottomCenter,
-        child: FadeTransition(
-            opacity: swipeUP
-                ? topLastContainerOpacityAnimation
-                : lastTopContainerOpacityAnimation,
-            child: getThirdItem()),
+        child: FadeTransition(opacity: swipeUP ? topLastContainerOpacityAnimation : lastTopContainerOpacityAnimation, child: getThirdItem()),
       ),
 
       swipeUP
           ? AnimatedBuilder(
               animation: firstAnimationController,
               builder: (context, child) {
-                return Align(
-                    alignment: bottomCenterContainerAlignment.value,
-                    child: getThirdItem());
+                return Align(alignment: bottomCenterContainerAlignment.value, child: getThirdItem());
               },
             )
           : Container(),
@@ -487,15 +431,11 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         context: context,
         builder: (context) => AlertDialog(
               backgroundColor: primaryColor,
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
               title: Center(
                 child: Text(
                   utils.getTranslated(context, "amountDial"),
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall!
-                      .copyWith(color: white),
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(color: white),
                 ),
               ),
               content: Column(
@@ -517,10 +457,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                     padding: const EdgeInsets.only(top: 8.0),
                     child: Text(
                       utils.getTranslated(context, "winningMsg"),
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodySmall!
-                          .copyWith(color: back),
+                      style: Theme.of(context).textTheme.bodySmall!.copyWith(color: back),
                       textAlign: TextAlign.center,
                     ),
                   )
@@ -528,12 +465,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
               ),
               actions: [
                 ElevatedButton.icon(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(back),
-                        shape: MaterialStateProperty.all(
-                            const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20.0))))),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(back), shape: MaterialStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))))),
                     onPressed: () async {
                       music.play(click);
                       try {
@@ -567,10 +499,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
   void showSelectLevelDialog() {
     print("Opp Skin: $opponentSkin");
     print("User Skin: $userSkin");
-    showDialog(
-        context: context,
-        builder: (_) =>
-            SelectLevelDialog(opponentSkin: opponentSkin, userSkin: userSkin));
+    showDialog(context: context, builder: (_) => SelectLevelDialog(opponentSkin: opponentSkin, userSkin: userSkin));
   }
 
   selectPassNPlayDialog() {
@@ -578,23 +507,18 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         context: context,
         builder: (context) => AlertDialog(
               backgroundColor: primaryColor,
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
               title: Center(
                 child: Text(
                   utils.getTranslated(context, "passNplayDialoge"),
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall!
-                      .copyWith(color: white),
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(color: white),
                 ),
               ),
               content: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Container(
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20), color: white),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: white),
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Center(
                       child: TextField(
@@ -623,8 +547,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
                   const SizedBox(height: 10),
                   Container(
                     //height: 30,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20), color: white),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: white),
                     padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: TextField(
                       controller: player2controller,
@@ -652,25 +575,12 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
               ),
               actions: [
                 ElevatedButton.icon(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(back),
-                        shape: MaterialStateProperty.all(
-                            const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20.0))))),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(back), shape: MaterialStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))))),
                     onPressed: () async {
                       music.play(click);
-                      if (player1controller.text.isNotEmpty &&
-                          player2controller.text.isNotEmpty) {
+                      if (player1controller.text.isNotEmpty && player2controller.text.isNotEmpty) {
                         Navigator.of(context).pop();
-                        Navigator.push(
-                            context,
-                            CupertinoPageRoute(
-                                builder: (context) => PassNPLay(
-                                    "${utils.limitChar(player1controller.text.toString(), 7)}",
-                                    "${utils.limitChar(player2controller.text.toString(), 7)}",
-                                    userSkin,
-                                    opponentSkin)));
+                        Navigator.push(context, CupertinoPageRoute(builder: (context) => PassNPLay("${utils.limitChar(player1controller.text.toString(), 7)}", "${utils.limitChar(player2controller.text.toString(), 7)}", userSkin, opponentSkin)));
                       }
                     },
                     icon: Icon(
@@ -693,15 +603,11 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         context: context,
         builder: (context) => AlertDialog(
               backgroundColor: primaryColor,
-              shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20.0))),
+              shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
               title: Center(
                 child: Text(
                   utils.getTranslated(context, "numberDial"),
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleSmall!
-                      .copyWith(color: white),
+                  style: Theme.of(context).textTheme.titleSmall!.copyWith(color: white),
                 ),
               ),
               content: Column(
@@ -727,12 +633,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
               ),
               actions: [
                 ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all(back),
-                        shape: MaterialStateProperty.all(
-                            const RoundedRectangleBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(20.0))))),
+                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(back), shape: MaterialStateProperty.all(const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))))),
                     onPressed: () async {
                       music.play(click);
                       try {
@@ -780,16 +681,12 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
             topAngle.value * math.pi / 180,
           ),
         height: MediaQuery.of(context).size.height / 3.6,
-        decoration: BoxDecoration(
-            color: topSwipeColor.value,
-            borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(30), topLeft: Radius.circular(30))),
+        decoration: BoxDecoration(color: topSwipeColor.value, borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(30), topLeft: Radius.circular(30))),
         child: Center(
           child: SingleChildScrollView(
             physics: const NeverScrollableScrollPhysics(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.only(
-                  start: 20, top: 10.0, bottom: 10.0, end: 10.0),
+              padding: const EdgeInsetsDirectional.only(start: 20, top: 10.0, bottom: 10.0, end: 10.0),
               child: rtlLanguages.contains(getlanguage)
                   ? Transform(
                       alignment: AlignmentDirectional.topCenter,
@@ -831,10 +728,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
           width: MediaQuery.of(context).size.width * 0.3,
           child: Text(
             itemList[pos].desc,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: bottomSwipeColor.value),
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(color: bottomSwipeColor.value),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             softWrap: true,
@@ -844,18 +738,12 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
           onPressed: () {
             playButtonPressed(pos);
           },
-          child: Text(utils.getTranslated(context, "playNow"),
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(color: white)),
+          child: Text(utils.getTranslated(context, "playNow"), style: Theme.of(context).textTheme.bodySmall!.copyWith(color: white)),
           style: ButtonStyle(
-            padding: MaterialStateProperty.all<EdgeInsets>(
-                const EdgeInsets.symmetric(vertical: 0, horizontal: 10)),
+            padding: MaterialStateProperty.all<EdgeInsets>(const EdgeInsets.symmetric(vertical: 0, horizontal: 10)),
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
-                if (states.contains(MaterialState.pressed))
-                  return secondaryColor;
+                if (states.contains(MaterialState.pressed)) return secondaryColor;
                 return secondarySelectedColor;
               },
             ),
@@ -878,30 +766,20 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
 
   Widget getCenterItem() {
     return SlideTransition(
-        position: centerAnimationController.drive(
-            Tween(begin: Offset(0.0, 0.1), end: Offset(0.0, 0.0))
-                .chain(CurveTween(curve: Curves.easeInOut))),
+        position: centerAnimationController.drive(Tween(begin: Offset(0.0, 0.1), end: Offset(0.0, 0.0)).chain(CurveTween(curve: Curves.easeInOut))),
         child: Container(
-            transformAlignment:
-                swipeUP ? Alignment.bottomRight : Alignment.topRight,
+            transformAlignment: swipeUP ? Alignment.bottomRight : Alignment.topRight,
             transform: Matrix4.identity()
               ..rotateZ(
-                swipeUP
-                    ? centerTopAngle.value * math.pi / 180
-                    : centerBottomAngle.value * math.pi / 180,
+                swipeUP ? centerTopAngle.value * math.pi / 180 : centerBottomAngle.value * math.pi / 180,
               ),
             height: MediaQuery.of(context).size.height / 3.3,
-            decoration: BoxDecoration(
-                color: bottomSwipeColor.value,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(30),
-                    topLeft: Radius.circular(30))),
+            decoration: BoxDecoration(color: bottomSwipeColor.value, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), topLeft: Radius.circular(30))),
             child: Center(
               child: SingleChildScrollView(
                 physics: NeverScrollableScrollPhysics(),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.only(
-                      start: 20.0, top: 10.0, bottom: 10.0, end: 10.0),
+                  padding: const EdgeInsetsDirectional.only(start: 20.0, top: 10.0, bottom: 10.0, end: 10.0),
                   child: rtlLanguages.contains(getlanguage)
                       ? Transform(
                           alignment: AlignmentDirectional.topCenter,
@@ -919,10 +797,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        getSvgImage(
-            imageName: itemList[_swiperIndex].icon,
-            imageColor: topSwipeColor.value,
-            height: 30),
+        getSvgImage(imageName: itemList[_swiperIndex].icon, imageColor: topSwipeColor.value, height: 30),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5.0),
           child: Container(
@@ -942,10 +817,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
           width: MediaQuery.of(context).size.width * 0.3,
           child: Text(
             itemList[_swiperIndex].desc,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: topSwipeColor.value),
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(color: topSwipeColor.value),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             softWrap: true,
@@ -955,18 +827,12 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
           onPressed: () {
             playButtonPressed(_swiperIndex);
           },
-          child: Text(utils.getTranslated(context, "playNow"),
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(color: white)),
+          child: Text(utils.getTranslated(context, "playNow"), style: Theme.of(context).textTheme.bodySmall!.copyWith(color: white)),
           style: ButtonStyle(
-            padding: MaterialStateProperty.all<EdgeInsets>(
-                EdgeInsets.symmetric(vertical: 0, horizontal: 10)),
+            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 0, horizontal: 10)),
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
-                if (states.contains(MaterialState.pressed))
-                  return secondaryColor;
+                if (states.contains(MaterialState.pressed)) return secondaryColor;
                 return secondarySelectedColor;
               },
             ),
@@ -986,19 +852,14 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
 
     return Container(
         transformAlignment: Alignment.topRight,
-        transform: Matrix4.identity()
-          ..rotateZ(bottomAngle.value * math.pi / 180),
+        transform: Matrix4.identity()..rotateZ(bottomAngle.value * math.pi / 180),
         height: MediaQuery.of(context).size.height / 3.6,
-        decoration: BoxDecoration(
-            color: topSwipeColor.value,
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(30), topLeft: Radius.circular(30))),
+        decoration: BoxDecoration(color: topSwipeColor.value, borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), topLeft: Radius.circular(30))),
         child: Center(
           child: SingleChildScrollView(
             physics: NeverScrollableScrollPhysics(),
             child: Padding(
-              padding: const EdgeInsetsDirectional.only(
-                  start: 20.0, bottom: 10.0, top: 10.0, end: 10.0),
+              padding: const EdgeInsetsDirectional.only(start: 20.0, bottom: 10.0, top: 10.0, end: 10.0),
               child: rtlLanguages.contains(getlanguage)
                   ? Transform(
                       alignment: AlignmentDirectional.topCenter,
@@ -1016,10 +877,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        getSvgImage(
-            imageName: itemList[pos].icon,
-            imageColor: bottomSwipeColor.value,
-            height: 30),
+        getSvgImage(imageName: itemList[pos].icon, imageColor: bottomSwipeColor.value, height: 30),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 5.0),
           child: Container(
@@ -1039,10 +897,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
           width: MediaQuery.of(context).size.width * 0.3,
           child: Text(
             itemList[pos].desc,
-            style: Theme.of(context)
-                .textTheme
-                .bodySmall!
-                .copyWith(color: bottomSwipeColor.value),
+            style: Theme.of(context).textTheme.bodySmall!.copyWith(color: bottomSwipeColor.value),
             maxLines: 2,
             overflow: TextOverflow.ellipsis,
             softWrap: true,
@@ -1052,18 +907,12 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
           onPressed: () {
             playButtonPressed(pos);
           },
-          child: Text(utils.getTranslated(context, "playNow"),
-              style: Theme.of(context)
-                  .textTheme
-                  .bodySmall!
-                  .copyWith(color: white)),
+          child: Text(utils.getTranslated(context, "playNow"), style: Theme.of(context).textTheme.bodySmall!.copyWith(color: white)),
           style: ButtonStyle(
-            padding: MaterialStateProperty.all<EdgeInsets>(
-                EdgeInsets.symmetric(vertical: 0, horizontal: 10)),
+            padding: MaterialStateProperty.all<EdgeInsets>(EdgeInsets.symmetric(vertical: 0, horizontal: 10)),
             backgroundColor: MaterialStateProperty.resolveWith<Color>(
               (Set<MaterialState> states) {
-                if (states.contains(MaterialState.pressed))
-                  return secondaryColor;
+                if (states.contains(MaterialState.pressed)) return secondaryColor;
                 return secondarySelectedColor;
               },
             ),
@@ -1088,9 +937,7 @@ class HomeScreenActivityState extends State<HomeScreenActivity>
         }
 
         //delete game if the game is created before 15 minutes and still in the DB
-        var timeDifferenceInMinutes = (DateTime.now()
-            .difference(DateTime.parse(value["time"]))
-            .inMinutes);
+        var timeDifferenceInMinutes = (DateTime.now().difference(DateTime.parse(value["time"])).inMinutes);
         if (timeDifferenceInMinutes > 15) {
           Dialoge.removeChild("Game", key);
         }
@@ -1193,12 +1040,7 @@ class ChipGrid extends StatefulWidget {
   final Function(int i) onChange;
   final bool avtar;
 
-  const ChipGrid(
-      {Key? key,
-      required this.list,
-      required this.onChange,
-      required this.avtar})
-      : super(key: key);
+  const ChipGrid({Key? key, required this.list, required this.onChange, required this.avtar}) : super(key: key);
 
   @override
   _ChipGridState createState() => _ChipGridState();
@@ -1236,18 +1078,15 @@ class _ChipGridState extends State<ChipGrid> {
                 }
               },
               child: Chip(
-                backgroundColor:
-                    selectedIndex == i ? secondarySelectedColor : back,
+                backgroundColor: selectedIndex == i ? secondarySelectedColor : back,
                 label: Padding(
-                  padding:
-                      EdgeInsets.symmetric(horizontal: widget.avtar ? 0 : 8.0),
+                  padding: EdgeInsets.symmetric(horizontal: widget.avtar ? 0 : 8.0),
                   child: Text(
                     widget.list[i].toString(),
                     style: Theme.of(context).textTheme.titleSmall,
                   ),
                 ),
-                avatar:
-                    widget.avtar ? getSvgImage(imageName: 'coin_symbol') : null,
+                avatar: widget.avtar ? getSvgImage(imageName: 'coin_symbol') : null,
               ),
             );
           }),

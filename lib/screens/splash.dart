@@ -41,14 +41,10 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).size.height * 0.1),
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.1),
             child: Text(
-              utils.getTranslated(context, "CalculateEveryMove"),
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineMedium!
-                  .copyWith(fontFamily: 'DISPLATTER', color: white),
+              utils.getTranslated(context, "Challenge Your Mind"),
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontFamily: 'DISPLATTER', color: white),
             ),
           )
         ],
@@ -58,8 +54,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: SystemUiOverlay.values);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
     super.dispose();
   }
 
@@ -69,8 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
       gameId: gameID,
       testMode: true,
       onComplete: () => print('Initialization Complete'),
-      onFailed: (error, message) =>
-          print('Initialization Failed: $error $message'),
+      onFailed: (error, message) => print('Initialization Failed: $error $message'),
     );
     music.play(backMusic);
 
