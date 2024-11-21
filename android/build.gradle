@@ -16,3 +16,6 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+// Define Kotlin version globally in ext
+ext.kotlin_version = '1.9.0'  // Updated Kotlin version to 1.9.0
