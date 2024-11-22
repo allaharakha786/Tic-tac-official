@@ -158,15 +158,7 @@ class Utils {
     );
   }
 
-  alert(
-      {required context,
-      required bool isMultipleAction,
-      required String defaultActionButtonName,
-      required Widget title,
-      required Widget content,
-      required void Function() onTapActionButton,
-      required bool barrierDismissible,
-      List? multipleAction}) {
+  alert({required context, required bool isMultipleAction, required String defaultActionButtonName, required Widget title, required Widget content, required void Function() onTapActionButton, required bool barrierDismissible, List? multipleAction}) {
     showDialog(
         context: context,
         barrierDismissible: barrierDismissible,
@@ -174,8 +166,7 @@ class Utils {
               canPop: false,
               child: AlertDialog(
                 backgroundColor: primaryColor,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 title: title,
                 content: content,
                 actions: multipleAction as List<Widget>?,
@@ -187,19 +178,10 @@ class Utils {
     int? _coin = 0;
 
     FirebaseDatabase db = FirebaseDatabase.instance;
-    var once = await db
-        .ref()
-        .child("users")
-        .child(FirebaseAuth.instance.currentUser!.uid)
-        .once();
+    var once = await db.ref().child("users").child(FirebaseAuth.instance.currentUser!.uid).once();
     _coin = await (once.snapshot.value as Map)["coin"];
 
-    db
-        .ref()
-        .child("users")
-        .child(FirebaseAuth.instance.currentUser!.uid)
-        .onChildChanged
-        .listen((DatabaseEvent ev) {
+    db.ref().child("users").child(FirebaseAuth.instance.currentUser!.uid).onChildChanged.listen((DatabaseEvent ev) {
       if (ev.snapshot.key == "coin") {
         _coin = int.parse(ev.snapshot.value.toString());
       }
@@ -228,13 +210,10 @@ class Utils {
 
   BoxDecoration gradBack() {
     return BoxDecoration(
-        gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-          secondaryColor,
-          primaryColor,
-        ]));
+        gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [
+      secondaryColor,
+      primaryColor,
+    ]));
   }
 
   String? validatePass(String value, String? msg1, String? msg2) {
@@ -250,8 +229,7 @@ class Utils {
   String? validateEmail(String value, String? msg1, String? msg2) {
     if (value.isEmpty) {
       return msg1;
-    } else if (!RegExp(
-            r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)"
+    } else if (!RegExp(r"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)"
             r"*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+"
             r"[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")
         .hasMatch(value)) {

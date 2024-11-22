@@ -28,23 +28,17 @@ class _SplashScreenState extends State<SplashScreen> {
         body: Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      decoration: utils.gradBack(),
+      decoration: BoxDecoration(color: Colors.white),
       child: Column(
         children: [
           Expanded(
-            child: Center(
-              child: getSvgImage(
-                imageName: "splash_logo",
-                width: 194,
-                height: 194,
-              ),
-            ),
+            child: Center(child: Image.asset('assets/images/app_logo.png')),
           ),
           Container(
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.1),
             child: Text(
               utils.getTranslated(context, "Challenge Your Mind"),
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontFamily: 'DISPLATTER', color: white),
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontFamily: 'DISPLATTER', color: Colors.black),
             ),
           )
         ],

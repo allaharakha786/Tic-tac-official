@@ -37,10 +37,11 @@ dev_dependencies:
     sdk: flutter
   flutter_launcher_icons: ^0.14.1
 
+
 flutter_launcher_icons:
-  android: "ic_launcher"
+  android: true
   ios: true
-  image_path: "assets/launcher_icon.png"
+  image_path: "assets/images/app_logo.png"
 
 # The following section is specific to Flutter.
 flutter:
