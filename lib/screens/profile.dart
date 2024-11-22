@@ -62,8 +62,7 @@ class _ProfileBodyState extends State<Profile> {
       platform = "IOS";
     }
     getSound();
-    getFieldValue("matchplayed", (e) => matchPlayedCount = e,
-        (e) => matchPlayedCount = e);
+    getFieldValue("matchplayed", (e) => matchPlayedCount = e, (e) => matchPlayedCount = e);
     getFieldValue("coin", (e) => coin = e, (e) => coin = e);
     getFieldValue("score", (e) => score = e, (e) => score = e);
     getFieldValue("matchwon", (e) => matchWon = e, (e) => matchWon = e);
@@ -134,43 +133,24 @@ class _ProfileBodyState extends State<Profile> {
                       Container(
                           height: MediaQuery.of(context).size.height / 4.5,
                           decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                  begin: Alignment.topCenter,
-                                  end: Alignment.bottomCenter,
-                                  colors: [
-                                    secondaryColor,
-                                    primaryColor,
-                                  ]),
-                              borderRadius: const BorderRadius.only(
-                                  bottomLeft: Radius.circular(40),
-                                  bottomRight: Radius.circular(40)))),
+                              gradient: LinearGradient(begin: Alignment.topCenter, end: Alignment.bottomCenter, colors: [
+                                secondaryColor,
+                                primaryColor,
+                              ]),
+                              borderRadius: const BorderRadius.only(bottomLeft: Radius.circular(40), bottomRight: Radius.circular(40)))),
                       Center(
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
                               margin: EdgeInsets.only(top: height + 10),
-                              child: Text("${utils.limitChar(username)}",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge!
-                                      .copyWith(
-                                          color: white,
-                                          fontWeight: FontWeight.bold)),
+                              child: Text("${utils.limitChar(username)}", style: Theme.of(context).textTheme.titleLarge!.copyWith(color: white, fontWeight: FontWeight.bold)),
                             ),
-                            Text(
-                                _auth.currentUser!.email == null
-                                    ? ""
-                                    : "${_auth.currentUser!.email}",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(color: white)),
+                            Text(_auth.currentUser!.email == null ? "" : "${_auth.currentUser!.email}", style: Theme.of(context).textTheme.bodySmall!.copyWith(color: white)),
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                getSvgImage(
-                                    imageName: 'coin_symbol', height: 15),
+                                getSvgImage(imageName: 'coin_symbol', height: 15),
                                 Text(
                                   "  $coin",
                                   style: TextStyle(color: white),
@@ -196,8 +176,7 @@ class _ProfileBodyState extends State<Profile> {
                             ),
                           )),
                       Container(
-                        margin: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.height * .22 - 55),
+                        margin: EdgeInsets.only(top: MediaQuery.of(context).size.height * .22 - 55),
                         child: Row(
                           children: [
                             Expanded(
@@ -247,99 +226,55 @@ class _ProfileBodyState extends State<Profile> {
                             child: Container(
                                 // margin: EdgeInsets.only(top: 10),
                                 padding: const EdgeInsets.all(2),
-                                decoration: BoxDecoration(
-                                    color: white,
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20))),
+                                decoration: BoxDecoration(color: white, borderRadius: const BorderRadius.all(Radius.circular(20))),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     InkWell(
                                       child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10, vertical: 5),
-                                        decoration: BoxDecoration(
-                                            color: sound ? primaryColor : white,
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20))),
+                                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                        decoration: BoxDecoration(color: sound ? primaryColor : white, borderRadius: const BorderRadius.all(Radius.circular(20))),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            getSvgImage(
-                                                imageName: 'soundon_dark',
-                                                imageColor: sound
-                                                    ? white
-                                                    : primaryColor,
-                                                height: 10,
-                                                width: 10),
+                                            getSvgImage(imageName: 'soundon_dark', imageColor: sound ? white : primaryColor, height: 10, width: 10),
                                             Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8.0),
+                                              padding: const EdgeInsets.only(left: 8.0),
                                               child: Text(
-                                                utils.getTranslated(
-                                                    context, "soundOn"),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodySmall!
-                                                    .copyWith(
-                                                        color: sound
-                                                            ? white
-                                                            : primaryColor),
+                                                utils.getTranslated(context, "soundOn"),
+                                                style: Theme.of(context).textTheme.bodySmall!.copyWith(color: sound ? white : primaryColor),
                                               ),
                                             )
                                           ],
                                         ),
                                       ),
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
+                                      borderRadius: const BorderRadius.all(Radius.circular(20)),
                                       onTap: () async {
                                         changeValue(true);
                                         music.play(click);
                                         setState(() {
                                           sound = true;
                                         });
-                                        if (Music.status != null &&
-                                            Music.status == "playing") {
+                                        if (Music.status != null && Music.status == "playing") {
                                         } else {
                                           await music.play(backMusic);
                                         }
                                       },
                                     ),
                                     InkWell(
-                                      borderRadius: const BorderRadius.all(
-                                          Radius.circular(20)),
+                                      borderRadius: const BorderRadius.all(Radius.circular(20)),
                                       child: Container(
-                                        padding: const EdgeInsets.symmetric(
-                                            horizontal: 10, vertical: 5),
-                                        decoration: BoxDecoration(
-                                            color: sound ? white : primaryColor,
-                                            borderRadius:
-                                                const BorderRadius.all(
-                                                    Radius.circular(20))),
+                                        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                        decoration: BoxDecoration(color: sound ? white : primaryColor, borderRadius: const BorderRadius.all(Radius.circular(20))),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
-                                            getSvgImage(
-                                                imageName: 'soundoff_dark',
-                                                imageColor: sound
-                                                    ? primaryColor
-                                                    : white,
-                                                height: 10,
-                                                width: 10),
+                                            getSvgImage(imageName: 'soundoff_dark', imageColor: sound ? primaryColor : white, height: 10, width: 10),
                                             Padding(
-                                              padding: const EdgeInsets.only(
-                                                  left: 8.0),
+                                              padding: const EdgeInsets.only(left: 8.0),
                                               child: Text(
-                                                utils.getTranslated(
-                                                    context, "soundOff"),
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .bodySmall!
-                                                    .copyWith(
-                                                        color: sound
-                                                            ? primaryColor
-                                                            : white),
+                                                utils.getTranslated(context, "soundOff"),
+                                                style: Theme.of(context).textTheme.bodySmall!.copyWith(color: sound ? primaryColor : white),
                                               ),
                                             )
                                           ],
@@ -347,8 +282,7 @@ class _ProfileBodyState extends State<Profile> {
                                       ),
                                       onTap: () async {
                                         print("music status ${Music.status}");
-                                        if (Music.status != null &&
-                                            Music.status == "playing") {
+                                        if (Music.status != null && Music.status == "playing") {
                                           await music.stop();
                                         }
                                         changeValue(false);
@@ -360,65 +294,41 @@ class _ProfileBodyState extends State<Profile> {
                                   ],
                                 )),
                           ),
-                          getTile(utils.getTranslated(context, "history"),
-                              "history_icon", true),
+                          getTile(utils.getTranslated(context, "history"), "history_icon", true),
                           if (!_auth.currentUser!.isAnonymous) ...[
-                            getTile(utils.getTranslated(context, "shop"),
-                                "shop_icon", true),
-                            getTile(utils.getTranslated(context, "skin"),
-                                "skin_icon", true),
+                            getTile(utils.getTranslated(context, "shop"), "shop_icon", true),
+                            getTile(utils.getTranslated(context, "skin"), "skin_icon", true),
                           ],
                           if (_auth.currentUser!.isAnonymous) ...[
                             InkWell(
                               onTap: () async {
                                 music.play(click);
-                                Navigator.push(
-                                    context,
-                                    CupertinoPageRoute(
-                                        builder: (context) =>
-                                            LoginWithEmail()));
+                                Navigator.push(context, CupertinoPageRoute(builder: (context) => LoginWithEmail()));
                               },
                               child: ListTile(
                                 leading: Icon(
                                   Icons.login,
-                                  color: primaryColor,
+                                  color: Colors.black,
                                   size: 22,
                                 ),
                                 title: Text(
                                   utils.getTranslated(context, "signInNow"),
-                                  style: TextStyle(
-                                      color: primaryColor,
-                                      fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
                           ],
-                          getTile(
-                              utils.getTranslated(context, "changeLanguage"),
-                              "language_icon",
-                              true),
-                          getTile(utils.getTranslated(context, "playMoreGames"),
-                              "", false),
-                          getTile(utils.getTranslated(context, "contactUs"),
-                              "contactus_icon", true),
-                          getTile(utils.getTranslated(context, "aboutUs"),
-                              "aboutus_icon", true),
-                          getTile(utils.getTranslated(context, "termCond"),
-                              "termscond_icon", true),
-                          getTile(utils.getTranslated(context, "privacy"),
-                              "privacypolicy_icon", true),
-                          getTile(
-                              utils.getTranslated(context, "howToPlayHeading"),
-                              "help_icon",
-                              true),
-                          getTile(utils.getTranslated(context, "rate"),
-                              "rateus_icon", true),
-                          getTile(utils.getTranslated(context, "share"),
-                              "share_app", true),
-                          getTile(utils.getTranslated(context, "logout"),
-                              "logout_icon", true),
-                          getTile(utils.getTranslated(context, "deleteAccount"),
-                              "delete_user", true),
+                          getTile(utils.getTranslated(context, "changeLanguage"), "language_icon", true),
+                          getTile(utils.getTranslated(context, "playMoreGames"), "", false),
+                          getTile(utils.getTranslated(context, "contactUs"), "contactus_icon", true),
+                          getTile(utils.getTranslated(context, "aboutUs"), "aboutus_icon", true),
+                          getTile(utils.getTranslated(context, "termCond"), "termscond_icon", true),
+                          getTile(utils.getTranslated(context, "privacy"), "privacypolicy_icon", true),
+                          getTile(utils.getTranslated(context, "howToPlayHeading"), "help_icon", true),
+                          getTile(utils.getTranslated(context, "rate"), "rateus_icon", true),
+                          getTile(utils.getTranslated(context, "share"), "share_app", true),
+                          getTile(utils.getTranslated(context, "logout"), "logout_icon", true),
+                          getTile(utils.getTranslated(context, "deleteAccount"), "delete_user", true),
                         ],
                       ),
                     ),
@@ -443,7 +353,7 @@ class _ProfileBodyState extends State<Profile> {
                               backgroundImage: NetworkImage(profilePic),
                               radius: 35,
                             ),
-                            backgroundColor: primaryColor,
+                            backgroundColor: Colors.black,
                             radius: 40,
                           ),
                           _auth.currentUser!.isAnonymous
@@ -454,14 +364,11 @@ class _ProfileBodyState extends State<Profile> {
                                   end: 0,
                                   child: Container(
                                     padding: EdgeInsets.all(2.0),
-                                    decoration: BoxDecoration(
-                                        color: grey,
-                                        borderRadius:
-                                            BorderRadius.circular(50.0)),
+                                    decoration: BoxDecoration(color: grey, borderRadius: BorderRadius.circular(50.0)),
                                     child: Icon(
                                       Icons.edit,
                                       size: 20,
-                                      color: primaryColor,
+                                      color: Colors.white,
                                     ),
                                   ))
                         ],
@@ -503,14 +410,9 @@ class _ProfileBodyState extends State<Profile> {
     });
     var fileName = _imageFile!.path.split('/').last;
 
-    var ref = firebase_storage.FirebaseStorage.instance
-        .ref()
-        .child('userProfiles')
-        .child('/$fileName');
+    var ref = firebase_storage.FirebaseStorage.instance.ref().child('userProfiles').child('/$fileName');
 
-    final metadata = firebase_storage.SettableMetadata(
-        contentType: 'image/jpeg',
-        customMetadata: {'picked-file-path': fileName});
+    final metadata = firebase_storage.SettableMetadata(contentType: 'image/jpeg', customMetadata: {'picked-file-path': fileName});
     firebase_storage.UploadTask uploadTask;
     uploadTask = ref.putFile(File(_imageFile!.path), metadata);
 
@@ -519,15 +421,13 @@ class _ProfileBodyState extends State<Profile> {
       var ins = GetUserInfo();
       await ins.setProfilePic(data);
 
-      utils.setSnackbar(
-          context, utils.getTranslated(context, "ProfileUpdatedSuccessfully"));
+      utils.setSnackbar(context, utils.getTranslated(context, "ProfileUpdatedSuccessfully"));
       setState(() {
         isLoading = false;
       });
     }).onError((error, stackTrace) {
       if (mounted) {
-        utils.setSnackbar(
-            context, utils.getTranslated(context, "SomethingWentWrong"));
+        utils.setSnackbar(context, utils.getTranslated(context, "SomethingWentWrong"));
       }
 
       setState(() {
@@ -556,12 +456,12 @@ class _ProfileBodyState extends State<Profile> {
             )
           : Icon(
               Icons.games,
-              color: primaryColor,
+              color: Colors.black,
               size: 20,
             ),
       title: Text(
         title,
-        style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+        style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       ),
       onTap: () async {
         try {
@@ -597,8 +497,7 @@ class _ProfileBodyState extends State<Profile> {
                       )));
         } else if (title == utils.getTranslated(context, "playMoreGames")) {
           music.play(click);
-          Navigator.push(context,
-              CupertinoPageRoute(builder: (context) => MoreGamesListing()));
+          Navigator.push(context, CupertinoPageRoute(builder: (context) => MoreGamesListing()));
         } else if (title == utils.getTranslated(context, "contactUs")) {
           Navigator.push(
               context,
@@ -624,13 +523,11 @@ class _ProfileBodyState extends State<Profile> {
                       )));
         } else if (title == utils.getTranslated(context, "howToPlayHeading")) {
           music.play(click);
-          Navigator.push(
-              context, CupertinoPageRoute(builder: (context) => HowToPlay()));
+          Navigator.push(context, CupertinoPageRoute(builder: (context) => HowToPlay()));
         } else if (title == utils.getTranslated(context, "rate")) {
           _openStoreListing();
         } else if (title == utils.getTranslated(context, "share")) {
-          var str =
-              "$appName\n\n$appFind$androidLink$packageName\n\n iOS:\n$iosLink$iosPackage";
+          var str = "$appName\n\n$appFind$androidLink$packageName\n\n iOS:\n$iosLink$iosPackage";
 
           Share.share(str);
         } else if (title == utils.getTranslated(context, "logout")) {
@@ -653,8 +550,7 @@ class _ProfileBodyState extends State<Profile> {
                   ),
                   multipleAction: [
                     TextButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(color)),
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
                         onPressed: () async {
                           var userID = FirebaseAuth.instance.currentUser!.uid;
                           if (FirebaseAuth.instance.currentUser!.isAnonymous) {
@@ -673,21 +569,17 @@ class _ProfileBodyState extends State<Profile> {
 
                           music.play(click);
 
-                          Navigator.of(context).pushNamedAndRemoveUntil(
-                              '/authscreen', (Route<dynamic> route) => false);
+                          Navigator.of(context).pushNamedAndRemoveUntil('/authscreen', (Route<dynamic> route) => false);
                         },
-                        child: Text(utils.getTranslated(context, "yes"),
-                            style: TextStyle(color: white))),
+                        child: Text(utils.getTranslated(context, "yes"), style: TextStyle(color: white))),
                     TextButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(color)),
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
                         onPressed: () async {
                           music.play(click);
 
                           Navigator.pop(context);
                         },
-                        child: Text(utils.getTranslated(context, "no"),
-                            style: TextStyle(color: white)))
+                        child: Text(utils.getTranslated(context, "no"), style: TextStyle(color: white)))
                   ],
                 );
               });
@@ -722,18 +614,14 @@ class _ProfileBodyState extends State<Profile> {
 
   void openChangeLanguageBottomSheet() {
     showModalBottomSheet(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40.0),
-                topRight: Radius.circular(40.0))),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0))),
         isScrollControlled: true,
         context: context,
         builder: (context) {
           return Wrap(
             children: [
               Padding(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: Form(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -741,12 +629,9 @@ class _ProfileBodyState extends State<Profile> {
                       bottomSheetHandle(),
                       bottomsheetLabel("changeLanguage"),
                       StatefulBuilder(
-                        builder:
-                            (BuildContext context, StateSetter setModalState) {
+                        builder: (BuildContext context, StateSetter setModalState) {
                           return SingleChildScrollView(
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: getLngList(context, setModalState)),
+                            child: Column(mainAxisAlignment: MainAxisAlignment.start, children: getLngList(context, setModalState)),
                           );
                         },
                       ),
@@ -761,18 +646,14 @@ class _ProfileBodyState extends State<Profile> {
 
   void openEditProfileBottomSheet() {
     showModalBottomSheet(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(40.0),
-                topRight: Radius.circular(40.0))),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(40.0), topRight: Radius.circular(40.0))),
         isScrollControlled: true,
         context: context,
         builder: (context) {
           return Wrap(
             children: [
               Padding(
-                padding: EdgeInsets.only(
-                    bottom: MediaQuery.of(context).viewInsets.bottom),
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
                 child: Form(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -780,120 +661,96 @@ class _ProfileBodyState extends State<Profile> {
                       bottomSheetHandle(),
                       bottomsheetLabel("editProfile"),
                       StatefulBuilder(
-                        builder:
-                            (BuildContext context, StateSetter setModalState) {
+                        builder: (BuildContext context, StateSetter setModalState) {
                           return SingleChildScrollView(
-                            child: Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  GestureDetector(
-                                    onTap: _imgFromGallery,
-                                    child: Container(
-                                      child: Center(
-                                        child: Stack(
-                                          children: [
-                                            CircleAvatar(
-                                              child: CircleAvatar(
-                                                backgroundImage:
-                                                    NetworkImage(profilePic),
-                                                radius: 39,
-                                              ),
-                                              backgroundColor: primaryColor,
-                                              radius: 40,
-                                            ),
-                                            Positioned.directional(
-                                                textDirection:
-                                                    Directionality.of(context),
-                                                bottom: 0,
-                                                end: 0,
-                                                child: Container(
-                                                  padding:
-                                                      const EdgeInsets.all(2.0),
-                                                  decoration: BoxDecoration(
-                                                      color: grey,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              50.0)),
-                                                  child: Icon(
-                                                    Icons.edit,
-                                                    size: 20,
-                                                    color: primaryColor,
-                                                  ),
-                                                ))
-                                          ],
+                            child: Column(mainAxisAlignment: MainAxisAlignment.start, children: [
+                              GestureDetector(
+                                onTap: _imgFromGallery,
+                                child: Container(
+                                  child: Center(
+                                    child: Stack(
+                                      children: [
+                                        CircleAvatar(
+                                          child: CircleAvatar(
+                                            backgroundImage: NetworkImage(profilePic),
+                                            radius: 39,
+                                          ),
+                                          backgroundColor: primaryColor,
+                                          radius: 40,
                                         ),
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: TextFormField(
-                                      key: _nameFieldKey,
-                                      keyboardType: TextInputType.text,
-                                      style: TextStyle(
-                                        color: primaryColor,
-                                        fontWeight: FontWeight.normal,
-                                      ),
-                                      textInputAction: TextInputAction.next,
-                                      initialValue: username,
-                                      validator: (val) {
-                                        if (val!.isEmpty) {
-                                          return utils.getTranslated(
-                                              context, "usernameRequired");
-                                        }
-                                        return null;
-                                      },
-                                      onSaved: (String? value) {
-                                        name = value ?? username;
-                                      },
-                                      decoration: InputDecoration(
-                                        prefixIcon: Icon(
-                                          Icons.account_circle_outlined,
-                                          color: primaryColor,
-                                          size: 20,
-                                        ),
-                                        hintText: utils.getTranslated(
-                                            context, "username"),
-                                        hintStyle: Theme.of(context)
-                                            .textTheme
-                                            .titleSmall!
-                                            .copyWith(
+                                        Positioned.directional(
+                                            textDirection: Directionality.of(context),
+                                            bottom: 0,
+                                            end: 0,
+                                            child: Container(
+                                              padding: const EdgeInsets.all(2.0),
+                                              decoration: BoxDecoration(color: grey, borderRadius: BorderRadius.circular(50.0)),
+                                              child: Icon(
+                                                Icons.edit,
+                                                size: 20,
                                                 color: primaryColor,
-                                                fontWeight: FontWeight.normal),
-                                        filled: true,
-                                        fillColor: white,
-                                        contentPadding:
-                                            const EdgeInsets.symmetric(
-                                          horizontal: 10,
-                                          vertical: 5,
-                                        ),
-                                        prefixIconConstraints:
-                                            const BoxConstraints(
-                                          minWidth: 40,
-                                          maxHeight: 20,
-                                        ),
-                                        enabledBorder: UnderlineInputBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(7.0),
-                                        ),
-                                      ),
+                                              ),
+                                            ))
+                                      ],
                                     ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsetsDirectional.only(
-                                        bottom: 20.0, end: 20.0, start: 20.0),
-                                    child: ElevatedButton(
-                                        style: ButtonStyle(
-                                            backgroundColor:
-                                                MaterialStateProperty.all(
-                                                    primaryColor)),
-                                        onPressed: changeUserNameInFirebase,
-                                        child: Text(
-                                          utils.getTranslated(context, "save"),
-                                          style: TextStyle(color: white),
-                                        )),
-                                  )
-                                ]),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(20.0),
+                                child: TextFormField(
+                                  key: _nameFieldKey,
+                                  keyboardType: TextInputType.text,
+                                  style: TextStyle(
+                                    color: primaryColor,
+                                    fontWeight: FontWeight.normal,
+                                  ),
+                                  textInputAction: TextInputAction.next,
+                                  initialValue: username,
+                                  validator: (val) {
+                                    if (val!.isEmpty) {
+                                      return utils.getTranslated(context, "usernameRequired");
+                                    }
+                                    return null;
+                                  },
+                                  onSaved: (String? value) {
+                                    name = value ?? username;
+                                  },
+                                  decoration: InputDecoration(
+                                    prefixIcon: Icon(
+                                      Icons.account_circle_outlined,
+                                      color: primaryColor,
+                                      size: 20,
+                                    ),
+                                    hintText: utils.getTranslated(context, "username"),
+                                    hintStyle: Theme.of(context).textTheme.titleSmall!.copyWith(color: primaryColor, fontWeight: FontWeight.normal),
+                                    filled: true,
+                                    fillColor: white,
+                                    contentPadding: const EdgeInsets.symmetric(
+                                      horizontal: 10,
+                                      vertical: 5,
+                                    ),
+                                    prefixIconConstraints: const BoxConstraints(
+                                      minWidth: 40,
+                                      maxHeight: 20,
+                                    ),
+                                    enabledBorder: UnderlineInputBorder(
+                                      borderRadius: BorderRadius.circular(7.0),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.only(bottom: 20.0, end: 20.0, start: 20.0),
+                                child: ElevatedButton(
+                                    style: ButtonStyle(backgroundColor: MaterialStateProperty.all(primaryColor)),
+                                    onPressed: changeUserNameInFirebase,
+                                    child: Text(
+                                      utils.getTranslated(context, "save"),
+                                      style: TextStyle(color: white),
+                                    )),
+                              )
+                            ]),
                           );
                         },
                       ),
@@ -931,12 +788,7 @@ class _ProfileBodyState extends State<Profile> {
                         children: [
                           Container(
                             height: 25.0,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: selectedLanguage == index
-                                    ? secondaryColor
-                                    : white,
-                                border: Border.all(color: secondaryColor)),
+                            decoration: BoxDecoration(shape: BoxShape.circle, color: selectedLanguage == index ? secondaryColor : white, border: Border.all(color: secondaryColor)),
                             child: Padding(
                               padding: const EdgeInsets.all(2.0),
                               child: selectedLanguage == index
@@ -958,10 +810,7 @@ class _ProfileBodyState extends State<Profile> {
                               ),
                               child: Text(
                                 languageList[index]!,
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleMedium!
-                                    .copyWith(color: primaryColor),
+                                style: Theme.of(context).textTheme.titleMedium!.copyWith(color: primaryColor),
                               ))
                         ],
                       ),
@@ -978,8 +827,7 @@ class _ProfileBodyState extends State<Profile> {
     return Padding(
       padding: const EdgeInsets.only(top: 10.0),
       child: Container(
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20.0), color: secondaryColor),
+        decoration: BoxDecoration(borderRadius: BorderRadius.circular(20.0), color: secondaryColor),
         height: 5,
         width: MediaQuery.of(context).size.width * 0.3,
       ),
@@ -990,10 +838,7 @@ class _ProfileBodyState extends State<Profile> {
       padding: const EdgeInsets.only(top: 30.0, bottom: 20),
       child: Text(
         utils.getTranslated(context, labelName),
-        style: Theme.of(context)
-            .textTheme
-            .titleLarge!
-            .copyWith(fontWeight: FontWeight.bold),
+        style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
       ));
 
   void _getLanguageList() {
@@ -1028,49 +873,36 @@ class _ProfileBodyState extends State<Profile> {
             ),
             multipleAction: [
               TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(color)),
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
                   onPressed: () async {
                     music.play(click);
                     try {
                       var currentUser = FirebaseAuth.instance.currentUser!;
 
                       await currentUser.delete().then((value) {
-                        utils.setSnackbar(
-                            context,
-                            utils.getTranslated(
-                                context, 'accountDeletedSuccess'));
+                        utils.setSnackbar(context, utils.getTranslated(context, 'accountDeletedSuccess'));
                       });
                       localValue.setSkinValue("user_skin", "");
                       localValue.setSkinValue("opponent_skin", "");
                       await utils.setUserLoggedIn("isLoggedIn", false);
 
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                          '/authscreen', (Route<dynamic> route) => false);
+                      Navigator.of(context).pushNamedAndRemoveUntil('/authscreen', (Route<dynamic> route) => false);
                     } catch (e) {
                       Navigator.pop(context);
-                      if (e
-                          .toString()
-                          .contains('firebase_auth/requires-recent-login')) {
-                        utils.setSnackbar(
-                            context,
-                            utils.getTranslated(
-                                context, 'loginAgainToDeleteAccount'));
+                      if (e.toString().contains('firebase_auth/requires-recent-login')) {
+                        utils.setSnackbar(context, utils.getTranslated(context, 'loginAgainToDeleteAccount'));
                       }
                     }
                   },
-                  child: Text(utils.getTranslated(context, "yes"),
-                      style: TextStyle(color: white))),
+                  child: Text(utils.getTranslated(context, "yes"), style: TextStyle(color: white))),
               TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(color)),
+                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
                   onPressed: () async {
                     music.play(click);
 
                     Navigator.pop(context);
                   },
-                  child: Text(utils.getTranslated(context, "no"),
-                      style: TextStyle(color: white)))
+                  child: Text(utils.getTranslated(context, "no"), style: TextStyle(color: white)))
             ],
           );
         });
