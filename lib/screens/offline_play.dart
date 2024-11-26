@@ -18,12 +18,10 @@ class SinglePlayerScreenActivity extends StatefulWidget {
   SinglePlayerScreenActivity(this.playerSkin, this.doraSkin, this.levelType);
 
   @override
-  _SinglePlayerScreenActivityState createState() =>
-      _SinglePlayerScreenActivityState();
+  _SinglePlayerScreenActivityState createState() => _SinglePlayerScreenActivityState();
 }
 
-class _SinglePlayerScreenActivityState
-    extends State<SinglePlayerScreenActivity> {
+class _SinglePlayerScreenActivityState extends State<SinglePlayerScreenActivity> {
   CountDownController _countDownPlayer = CountDownController();
   String? player;
 
@@ -53,12 +51,10 @@ class _SinglePlayerScreenActivityState
 
     // For Compatibility with older versions, as we have changed to use svg instead of png.
     if (widget.doraSkin!.endsWith('.png')) {
-      widget.doraSkin =
-          widget.doraSkin!.split('.png').first.split('images/').last;
+      widget.doraSkin = widget.doraSkin!.split('.png').first.split('images/').last;
     }
     if (widget.playerSkin!.endsWith('.png')) {
-      widget.playerSkin =
-          widget.playerSkin!.split('.png').first.split('images/').last;
+      widget.playerSkin = widget.playerSkin!.split('.png').first.split('images/').last;
     }
     print("RM :: Dora Skin :: ${widget.doraSkin}");
     print("RM :: Player Skin :: ${widget.playerSkin}");
@@ -91,20 +87,14 @@ class _SinglePlayerScreenActivityState
 
   @override
   void didChangeDependencies() {
-    currentMove = player == "X"
-        ? utils.getTranslated(context, "doraTurn")
-        : utils.getTranslated(context, "yourTurn");
+    currentMove = player == "X" ? utils.getTranslated(context, "doraTurn") : utils.getTranslated(context, "yourTurn");
     super.didChangeDependencies();
   }
 
   void check() {
     for (var i = 0; i < buttons.length; i++) {
       for (var j = 0; j < utils.winningCondition.length; j++) {
-        if (buttons[utils.winningCondition[j][0]]["player"] ==
-                buttons[utils.winningCondition[j][1]]["player"] &&
-            buttons[utils.winningCondition[j][1]]["player"] ==
-                buttons[utils.winningCondition[j][2]]["player"] &&
-            buttons[utils.winningCondition[j][1]]["player"] != "0") {
+        if (buttons[utils.winningCondition[j][0]]["player"] == buttons[utils.winningCondition[j][1]]["player"] && buttons[utils.winningCondition[j][1]]["player"] == buttons[utils.winningCondition[j][2]]["player"] && buttons[utils.winningCondition[j][1]]["player"] != "0") {
           winner = buttons[utils.winningCondition[j][1]]["player"];
 
           gameStatus = "over";
@@ -133,9 +123,7 @@ class _SinglePlayerScreenActivityState
 
             Future.delayed(const Duration(seconds: 1)).then((value) {
               if (winner == "0" && gameStatus == "tie") {
-                Dialoge()
-                  ..tie(context, "Singleplayer", "", "", widget.playerSkin,
-                      widget.doraSkin, widget.levelType);
+                Dialoge()..tie(context, "Singleplayer", "", "", widget.playerSkin, widget.doraSkin, widget.levelType);
               }
               _countDownPlayer.pause();
               setState(() {});
@@ -168,17 +156,14 @@ class _SinglePlayerScreenActivityState
     seconds = rnd.nextInt(countdowntime - 4) + 1;
 
     if (gameStatus == "started") {
-      currentMove = player == "X"
-          ? utils.getTranslated(context, "doraTurn")
-          : utils.getTranslated(context, "yourTurn");
+      currentMove = player == "X" ? utils.getTranslated(context, "doraTurn") : utils.getTranslated(context, "yourTurn");
 
       setState(() {});
       if (gameStatus == "started") {
         check();
       }
       if (player == "X") {
-        await Future.delayed(Duration(milliseconds: seconds * 500))
-            .then((_) async {
+        await Future.delayed(Duration(milliseconds: seconds * 500)).then((_) async {
           if (!mounted) {
             return;
           }
@@ -348,46 +333,61 @@ class _SinglePlayerScreenActivityState
   showQuitGameDialog() async {
     music.play(click);
     await showDialog(
-        context: context,
-        builder: (context) {
-          var color = secondaryColor;
-
-          return Alert(
-            title: Text(
-              utils.getTranslated(context, "aleart"),
-              style: TextStyle(color: white),
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20), // Rounded corners for the dialog
+          ),
+          backgroundColor: primaryColor, // Optional: Change background color
+          title: Text(
+            utils.getTranslated(context, "aleart"),
+            style: TextStyle(color: white),
+          ),
+          content: Text(
+            utils.getTranslated(context, "areYouSure"),
+            style: TextStyle(color: white),
+          ),
+          actions: [
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10), // Rounded corners for the button
+                ),
+              ),
+              onPressed: () async {
+                music.play(click);
+                Navigator.popUntil(context, ModalRoute.withName("/home"));
+              },
+              child: Text(
+                utils.getTranslated(context, "ok"),
+                style: TextStyle(color: primaryColor),
+              ),
             ),
-            isMultipleAction: true,
-            defaultActionButtonName: utils.getTranslated(context, "ok"),
-            onTapActionButton: () {},
-            content: Text(
-              utils.getTranslated(context, "areYouSure"),
-              style: TextStyle(color: white),
+            TextButton(
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10), // Rounded corners for the button
+                ),
+              ),
+              onPressed: () async {
+                music.play(click);
+                Navigator.pop(context);
+              },
+              child: Text(
+                utils.getTranslated(context, "cancle"),
+                style: TextStyle(color: primaryColor),
+              ),
             ),
-            multipleAction: [
-              TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(color)),
-                  onPressed: () async {
-                    music.play(click);
-
-                    Navigator.popUntil(context, ModalRoute.withName("/home"));
-                  },
-                  child: Text(utils.getTranslated(context, "ok"),
-                      style: TextStyle(color: white))),
-              TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(color)),
-                  onPressed: () async {
-                    music.play(click);
-
-                    Navigator.pop(context);
-                  },
-                  child: Text(utils.getTranslated(context, "cancle"),
-                      style: TextStyle(color: white)))
-            ],
-          );
-        });
+            SizedBox(
+              width: 6,
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -428,23 +428,12 @@ class _SinglePlayerScreenActivityState
                                 music.play(losegame);
                                 _countDownPlayer.pause();
 
-                                currentMove !=
-                                        utils.getTranslated(context, "doraTurn")
-                                    ? Dialoge.winner(
-                                        context,
-                                        utils.getTranslated(context, "dora"),
-                                        "",
-                                        "",
-                                        "",
-                                        "")
-                                    : Dialoge.winner(
-                                        context, "$_username", "", "", "", "");
+                                currentMove != utils.getTranslated(context, "doraTurn") ? Dialoge.winner(context, utils.getTranslated(context, "dora"), "", "", "", "") : Dialoge.winner(context, "$_username", "", "", "", "");
                                 setState(() {});
                               },
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.only(
-                                  start: 8.0, end: 8.0),
+                              padding: const EdgeInsetsDirectional.only(start: 8.0, end: 8.0),
                               child: Text("$currentMove"),
                             )
                           ],
@@ -474,8 +463,7 @@ class _SinglePlayerScreenActivityState
                             GridView.builder(
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 3,
                                 crossAxisSpacing: 10,
                                 mainAxisSpacing: 10,
@@ -484,12 +472,8 @@ class _SinglePlayerScreenActivityState
                               itemBuilder: (context, i) {
                                 return GestureDetector(
                                   onTap: () async {
-                                    await Future.delayed(
-                                        Duration(milliseconds: 500));
-                                    if (gameStatus == "started" &&
-                                        currentMove ==
-                                            utils.getTranslated(
-                                                context, "yourTurn")) {
+                                    await Future.delayed(Duration(milliseconds: 500));
+                                    if (gameStatus == "started" && currentMove == utils.getTranslated(context, "yourTurn")) {
                                       playGame(i);
                                     }
                                   },
@@ -511,22 +495,15 @@ class _SinglePlayerScreenActivityState
                                               blurRadius: 7,
                                             ),
                                           ],
-                                          borderRadius:
-                                              BorderRadius.circular(40),
+                                          borderRadius: BorderRadius.circular(40),
                                         ),
                                       ),
                                     ),
-                                    getSvgImage(
-                                        imageName: 'grid_box',
-                                        fit: BoxFit.fill),
+                                    getSvgImage(imageName: 'grid_box', fit: BoxFit.fill),
                                     buttons[i]['state'] == ""
                                         ? const SizedBox()
                                         : Padding(
-                                            padding: EdgeInsets.all(
-                                                MediaQuery.of(context)
-                                                        .size
-                                                        .width *
-                                                    0.05),
+                                            padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
                                             child: getSvgImage(
                                               imageName: utils.returnImage(
                                                 i,
@@ -552,8 +529,7 @@ class _SinglePlayerScreenActivityState
                 Expanded(
                   flex: 1,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20.0, right: 20, bottom: 20),
+                    padding: const EdgeInsets.only(left: 20.0, right: 20, bottom: 20),
                     child: Row(
                       children: [
                         Row(
@@ -564,10 +540,7 @@ class _SinglePlayerScreenActivityState
                                     radius: 25,
                                   )
                                 : CircleAvatar(
-                                    child: getSvgImage(
-                                        imageName: "signin_Dora",
-                                        width: 154,
-                                        height: 172),
+                                    child: getSvgImage(imageName: "signin_Dora", width: 154, height: 172),
                                     radius: 25,
                                   ),
                             Padding(
@@ -604,8 +577,7 @@ class _SinglePlayerScreenActivityState
                           ],
                         ),
                         Expanded(
-                          child: getSvgImage(
-                              imageName: "vs_small", width: 22, height: 21),
+                          child: getSvgImage(imageName: "vs_small", width: 22, height: 21),
                         ),
                         Row(
                           children: [
@@ -638,10 +610,7 @@ class _SinglePlayerScreenActivityState
                               padding: const EdgeInsets.only(left: 8.0),
                               child: CircleAvatar(
                                 backgroundColor: Colors.transparent,
-                                child: getSvgImage(
-                                    imageName: 'signin_Dora',
-                                    width: 154,
-                                    height: 137),
+                                child: getSvgImage(imageName: 'signin_Dora', width: 154, height: 137),
                                 radius: 25,
                               ),
                             ),

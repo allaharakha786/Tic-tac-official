@@ -313,7 +313,7 @@ class _ProfileBodyState extends State<Profile> {
                                 ),
                                 title: Text(
                                   utils.getTranslated(context, "signInNow"),
-                                  style: TextStyle(color: primaryColor, fontWeight: FontWeight.bold),
+                                  style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                                 ),
                               ),
                             ),
@@ -493,7 +493,7 @@ class _ProfileBodyState extends State<Profile> {
               context,
               CupertinoPageRoute(
                   builder: (context) => PrivacyPolicy(
-                        title: utils.getTranslated(context, "aboutUs"),
+                        type: 'about',
                       )));
         } else if (title == utils.getTranslated(context, "playMoreGames")) {
           music.play(click);
@@ -503,7 +503,7 @@ class _ProfileBodyState extends State<Profile> {
               context,
               CupertinoPageRoute(
                   builder: (context) => PrivacyPolicy(
-                        title: utils.getTranslated(context, "contactUs"),
+                        type: 'contact',
                       )));
         } else if (title == utils.getTranslated(context, "termCond")) {
           music.play(click);
@@ -511,7 +511,7 @@ class _ProfileBodyState extends State<Profile> {
               context,
               CupertinoPageRoute(
                   builder: (context) => PrivacyPolicy(
-                        title: utils.getTranslated(context, "termCond"),
+                        type: 'terms',
                       )));
         } else if (title == utils.getTranslated(context, "privacy")) {
           music.play(click);
@@ -519,7 +519,7 @@ class _ProfileBodyState extends State<Profile> {
               context,
               CupertinoPageRoute(
                   builder: (context) => PrivacyPolicy(
-                        title: utils.getTranslated(context, "privacy"),
+                        type: 'privacy',
                       )));
         } else if (title == utils.getTranslated(context, "howToPlayHeading")) {
           music.play(click);
@@ -536,21 +536,27 @@ class _ProfileBodyState extends State<Profile> {
               builder: (context) {
                 var color = secondaryColor;
 
-                return Alert(
+                return AlertDialog(
+                  backgroundColor: primaryColor,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20), // Rounded corners for the dialog
+                  ),
                   title: Text(
                     utils.getTranslated(context, "logout"),
                     style: TextStyle(color: white),
                   ),
-                  isMultipleAction: true,
-                  defaultActionButtonName: utils.getTranslated(context, "ok"),
-                  onTapActionButton: () {},
                   content: Text(
                     utils.getTranslated(context, "areYouSure"),
                     style: TextStyle(color: white),
                   ),
-                  multipleAction: [
+                  actions: [
                     TextButton(
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10), // Rounded corners for the button
+                          ),
+                        ),
                         onPressed: () async {
                           var userID = FirebaseAuth.instance.currentUser!.uid;
                           if (FirebaseAuth.instance.currentUser!.isAnonymous) {
@@ -571,15 +577,23 @@ class _ProfileBodyState extends State<Profile> {
 
                           Navigator.of(context).pushNamedAndRemoveUntil('/authscreen', (Route<dynamic> route) => false);
                         },
-                        child: Text(utils.getTranslated(context, "yes"), style: TextStyle(color: white))),
+                        child: Text(utils.getTranslated(context, "yes"), style: TextStyle(color: primaryColor))),
                     TextButton(
-                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
+                        style: TextButton.styleFrom(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10), // Rounded corners for the button
+                          ),
+                        ),
                         onPressed: () async {
                           music.play(click);
 
                           Navigator.pop(context);
                         },
-                        child: Text(utils.getTranslated(context, "no"), style: TextStyle(color: white)))
+                        child: Text(utils.getTranslated(context, "no"), style: TextStyle(color: primaryColor))),
+                    SizedBox(
+                      width: 7,
+                    ),
                   ],
                 );
               });
@@ -859,21 +873,27 @@ class _ProfileBodyState extends State<Profile> {
         builder: (context) {
           var color = secondaryColor;
 
-          return Alert(
+          return AlertDialog(
+            backgroundColor: primaryColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20), // Rounded corners for the dialog
+            ),
             title: Text(
               utils.getTranslated(context, "deleteAccount"),
               style: TextStyle(color: white),
             ),
-            isMultipleAction: true,
-            defaultActionButtonName: utils.getTranslated(context, "ok"),
-            onTapActionButton: () {},
             content: Text(
               utils.getTranslated(context, "areYouSure"),
               style: TextStyle(color: white),
             ),
-            multipleAction: [
+            actions: [
               TextButton(
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10), // Rounded corners for the button
+                    ),
+                  ),
                   onPressed: () async {
                     music.play(click);
                     try {
@@ -894,15 +914,21 @@ class _ProfileBodyState extends State<Profile> {
                       }
                     }
                   },
-                  child: Text(utils.getTranslated(context, "yes"), style: TextStyle(color: white))),
+                  child: Text(utils.getTranslated(context, "yes"), style: TextStyle(color: primaryColor))),
               TextButton(
-                  style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10), // Rounded corners for the button
+                    ),
+                  ),
                   onPressed: () async {
                     music.play(click);
 
                     Navigator.pop(context);
                   },
-                  child: Text(utils.getTranslated(context, "no"), style: TextStyle(color: white)))
+                  child: Text(utils.getTranslated(context, "no"), style: TextStyle(color: primaryColor))),
+              SizedBox(width: 6)
             ],
           );
         });

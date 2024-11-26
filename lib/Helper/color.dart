@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 final Color primaryColor = Colors.blue;
 final Color secondaryColor = const Color.fromARGB(255, 82, 111, 163);
-final Color secondarySelectedColor = Colors.black;
+final Color secondarySelectedColor = Color.fromARGB(255, 240, 164, 103);
 
 final Color lightWhite = Color(0xffE9E9E9);
 final Color white = Color(0xffffffff);

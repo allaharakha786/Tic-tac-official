@@ -28,7 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
         body: Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      decoration: BoxDecoration(color: Colors.white),
+      decoration: BoxDecoration(color: primaryColor),
       child: Column(
         children: [
           Expanded(
@@ -38,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
             padding: EdgeInsets.only(bottom: MediaQuery.of(context).size.height * 0.1),
             child: Text(
               utils.getTranslated(context, "Challenge Your Mind"),
-              style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontFamily: 'DISPLATTER', color: Colors.black),
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(fontFamily: 'DISPLATTER', color: Colors.white),
             ),
           )
         ],

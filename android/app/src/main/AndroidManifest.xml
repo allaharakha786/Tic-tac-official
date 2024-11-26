@@ -21,7 +21,7 @@
         </intent>
     </queries>
     <application
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/launcher_icon"
         android:label="Tic Tac Official"
         android:usesCleartextTraffic="true">
 
@@ -63,7 +63,7 @@
             android:value="2" />
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3940256099942544~3347511713" />
+            android:value="ca-app-pub-5866002551128609~3964147422"/> <!-- Your AdMob App ID -->
 
 
     </application>

@@ -45,12 +45,10 @@ class _PassNPLayState extends State<PassNPLay> {
 
     // For Compatibility with older versions, as we have changed to use svg instead of png.
     if (widget.player1Skin!.endsWith('.png')) {
-      widget.player1Skin =
-          widget.player1Skin!.split('.png').first.split('images/').last;
+      widget.player1Skin = widget.player1Skin!.split('.png').first.split('images/').last;
     }
     if (widget.player2Skin!.endsWith('.png')) {
-      widget.player2Skin =
-          widget.player2Skin!.split('.png').first.split('images/').last;
+      widget.player2Skin = widget.player2Skin!.split('.png').first.split('images/').last;
     }
 
     playGame();
@@ -59,11 +57,7 @@ class _PassNPLayState extends State<PassNPLay> {
   void check() {
     for (var i = 0; i < buttons.length; i++) {
       for (var j = 0; j < utils.winningCondition.length; j++) {
-        if (buttons[utils.winningCondition[j][0]]["player"] ==
-                buttons[utils.winningCondition[j][1]]["player"] &&
-            buttons[utils.winningCondition[j][1]]["player"] ==
-                buttons[utils.winningCondition[j][2]]["player"] &&
-            buttons[utils.winningCondition[j][1]]["player"] != "0") {
+        if (buttons[utils.winningCondition[j][0]]["player"] == buttons[utils.winningCondition[j][1]]["player"] && buttons[utils.winningCondition[j][1]]["player"] == buttons[utils.winningCondition[j][2]]["player"] && buttons[utils.winningCondition[j][1]]["player"] != "0") {
           winner = buttons[utils.winningCondition[j][1]]["player"];
 
           gameStatus = "over";
@@ -92,14 +86,7 @@ class _PassNPLayState extends State<PassNPLay> {
 
             Future.delayed(Duration(seconds: 1)).then((value) {
               if (winner == "0" && gameStatus == "tie") {
-                Dialoge()
-                  ..tie(
-                      context,
-                      "passnplay",
-                      widget.player1.toString(),
-                      widget.player2.toString(),
-                      widget.player1Skin,
-                      widget.player2Skin);
+                Dialoge()..tie(context, "passnplay", widget.player1.toString(), widget.player2.toString(), widget.player1Skin, widget.player2Skin);
               }
               _countDownPlayer.pause();
               setState(() {});
@@ -128,9 +115,7 @@ class _PassNPLayState extends State<PassNPLay> {
 
   playGame([i]) async {
     if (gameStatus == "started") {
-      currentMove = player == "X"
-          ? widget.player1.toString() + " Turn"
-          : widget.player2.toString() + " Turn";
+      currentMove = player == "X" ? widget.player1.toString() + " Turn" : widget.player2.toString() + " Turn";
 
       setState(() {});
 
@@ -204,26 +189,21 @@ class _PassNPLayState extends State<PassNPLay> {
                   ),
                   multipleAction: [
                     TextButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(color)),
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
                         onPressed: () async {
                           music.play(click);
 
-                          Navigator.popUntil(
-                              context, ModalRoute.withName("/home"));
+                          Navigator.popUntil(context, ModalRoute.withName("/home"));
                         },
-                        child: Text(utils.getTranslated(context, "ok"),
-                            style: TextStyle(color: white))),
+                        child: Text(utils.getTranslated(context, "ok"), style: TextStyle(color: white))),
                     TextButton(
-                        style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all(color)),
+                        style: ButtonStyle(backgroundColor: MaterialStateProperty.all(color)),
                         onPressed: () async {
                           music.play(click);
 
                           Navigator.pop(context);
                         },
-                        child: Text(utils.getTranslated(context, "cancle"),
-                            style: TextStyle(color: white)))
+                        child: Text(utils.getTranslated(context, "cancle"), style: TextStyle(color: white)))
                   ],
                 );
               });
@@ -259,21 +239,11 @@ class _PassNPLayState extends State<PassNPLay> {
                               initialDuration: 0,
                               onComplete: () async {
                                 music.play(losegame);
-                                Dialoge.winner(
-                                    context,
-                                    currentMove ==
-                                            widget.player1.toString() + " Turn"
-                                        ? "${widget.player2.toString()}"
-                                        : "${widget.player1.toString()}",
-                                    "",
-                                    "",
-                                    "",
-                                    "");
+                                Dialoge.winner(context, currentMove == widget.player1.toString() + " Turn" ? "${widget.player2.toString()}" : "${widget.player1.toString()}", "", "", "", "");
                               },
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsetsDirectional.only(start: 8.0),
+                              padding: const EdgeInsetsDirectional.only(start: 8.0),
                               child: Text("$currentMove"),
                             )
                           ],
@@ -303,17 +273,12 @@ class _PassNPLayState extends State<PassNPLay> {
                             GridView.builder(
                               physics: NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 3,
-                                      crossAxisSpacing: 10,
-                                      mainAxisSpacing: 10),
+                              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 10, mainAxisSpacing: 10),
                               itemCount: 9,
                               itemBuilder: (context, index) {
                                 return GestureDetector(
                                   onTap: () async {
-                                    await Future.delayed(
-                                        Duration(milliseconds: 500));
+                                    await Future.delayed(Duration(milliseconds: 500));
                                     if (gameStatus == "started") {
                                       playGame(index);
                                     }
@@ -338,28 +303,17 @@ class _PassNPLayState extends State<PassNPLay> {
                                                 blurRadius: 7,
                                               ),
                                             ],
-                                            borderRadius:
-                                                BorderRadius.circular(40),
+                                            borderRadius: BorderRadius.circular(40),
                                           ),
                                         ),
                                       ),
-                                      getSvgImage(
-                                          imageName: 'grid_box',
-                                          fit: BoxFit.fill),
+                                      getSvgImage(imageName: 'grid_box', fit: BoxFit.fill),
                                       buttons[index]['state'] == ""
                                           ? Container()
                                           : Padding(
-                                              padding: EdgeInsets.all(
-                                                  MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      0.05),
+                                              padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
                                               child: getSvgImage(
-                                                imageName: u.returnImage(
-                                                    index,
-                                                    buttons,
-                                                    widget.player2Skin,
-                                                    widget.player1Skin),
+                                                imageName: u.returnImage(index, buttons, widget.player2Skin, widget.player1Skin),
                                                 height: double.maxFinite,
                                                 width: double.maxFinite,
                                                 fit: BoxFit.fill,
@@ -379,17 +333,13 @@ class _PassNPLayState extends State<PassNPLay> {
                 Expanded(
                   flex: 1,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                        left: 20.0, right: 20, bottom: 20),
+                    padding: const EdgeInsets.only(left: 20.0, right: 20, bottom: 20),
                     child: Row(
                       children: [
                         Row(
                           children: [
                             CircleAvatar(
-                              child: getSvgImage(
-                                  imageName: "signin_Dora",
-                                  width: 154,
-                                  height: 172),
+                              child: getSvgImage(imageName: "signin_Dora", width: 154, height: 172),
                               radius: 25,
                               backgroundColor: Colors.transparent,
                             ),
@@ -421,8 +371,7 @@ class _PassNPLayState extends State<PassNPLay> {
                           ],
                         ),
                         Expanded(
-                          child: getSvgImage(
-                              imageName: "vs_small", width: 22, height: 21),
+                          child: getSvgImage(imageName: "vs_small", width: 22, height: 21),
                         ),
                         Row(
                           children: [
@@ -451,10 +400,7 @@ class _PassNPLayState extends State<PassNPLay> {
                               padding: const EdgeInsets.only(left: 8.0),
                               child: CircleAvatar(
                                 backgroundColor: Colors.transparent,
-                                child: getSvgImage(
-                                    imageName: "signin_Dora",
-                                    width: 154,
-                                    height: 172),
+                                child: getSvgImage(imageName: "signin_Dora", width: 154, height: 172),
                                 radius: 25,
                               ),
                             ),
@@ -482,39 +428,50 @@ class _PassNPLayState extends State<PassNPLay> {
         builder: (context) {
           var color = secondaryColor;
 
-          return Alert(
+          return AlertDialog(
+            backgroundColor: primaryColor, // Optional: Change background color
+
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
             title: Text(
               utils.getTranslated(context, "aleart"),
               style: TextStyle(color: white),
             ),
-            isMultipleAction: true,
-            defaultActionButtonName: utils.getTranslated(context, "ok"),
-            onTapActionButton: () {},
             content: Text(
               utils.getTranslated(context, "areYouSure"),
               style: TextStyle(color: white),
             ),
-            multipleAction: [
+            actions: [
               TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(color)),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10), // Rounded corners for the button
+                    ),
+                  ),
                   onPressed: () async {
                     music.play(click);
 
                     Navigator.popUntil(context, ModalRoute.withName("/home"));
                   },
-                  child: Text(utils.getTranslated(context, "ok"),
-                      style: TextStyle(color: white))),
+                  child: Text(utils.getTranslated(context, "ok"), style: TextStyle(color: primaryColor))),
               TextButton(
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(color)),
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10), // Rounded corners for the button
+                    ),
+                  ),
                   onPressed: () async {
                     music.play(click);
 
                     Navigator.pop(context);
                   },
-                  child: Text(utils.getTranslated(context, "cancle"),
-                      style: TextStyle(color: white)))
+                  child: Text(utils.getTranslated(context, "cancle"), style: TextStyle(color: primaryColor))),
+              SizedBox(
+                width: 6,
+              )
             ],
           );
         });
